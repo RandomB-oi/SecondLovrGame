@@ -1,0 +1,21 @@
+{
+	"robloxLsp.diagnostics.globals": [
+		"lovr",
+		"bit"
+	],
+	"Lua.diagnostics.globals": [
+		"lovr",
+		"bit",
+		"Mat4"
+	],
+	"Lua.diagnostics.disable": [
+		"deprecated"
+	],
+	"Lua.runtime.version": "LuaJIT",
+	"Lua.workspace.library": [
+		"${3rd}/lovr/library"
+	],
+	"robloxLsp.diagnostics.disable": [
+		"undefined-global"
+	]
+}
