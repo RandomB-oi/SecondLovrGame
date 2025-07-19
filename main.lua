@@ -43,15 +43,20 @@ function lovr.load()
 		-- Camera:Turn(0, 0)
 	end
 
-	local shader = lovr.graphics.newShader("Shaders/vertex.glsl", "Shaders/fragment.glsl", {})
+	local shader = lovr.graphics.newShader("Shaders/vertex.vs", "Shaders/fragment.fs", {})
 	local function ApplyShaders(pass)
 		pass:setShader(shader)
 		pass:send('ambience', { 70/255, 70/255, 70/255, 1.0 })
 		pass:send('fogColor', { 147/255, 204/255, 234/255, 1.0 })
-		pass:send('fogStart', .2)
-		pass:send('fogEnd', 3)
+		pass:send('fogStart', 2)
+		pass:send('fogEnd', 30)
 		pass:send("sunDirection", { -0.558276355266571, 0.727559506893158, -0.39872872829437256 })
-		pass:send("sunLightColor", { 1.0, 1.0, 1.0, 1.0 })
+		pass:send("sunLightColor", { 0.5, 0.5, 0.5, 1.0 })
+
+		-- pass:send("lightPosition", {0, 2, -5})
+		-- pass:send("lightColor", {1,1,1,1})
+		-- pass:send("lightRange", 5)
+		-- pass:send("lightBrightness", .6)
 
 		local width, height = lovr.system.getWindowDimensions()
 		pass:send("screenWidth", width)
@@ -72,6 +77,6 @@ function lovr.load()
 
 		ApplyShaders(pass)
 
-		pass:draw(WorldTerrain, 0, 0, 0, 1, 0)
+		pass:draw(WorldTerrain, 0, 0, 0, 10, 0)
 	end
 end
